@@ -1,0 +1,8 @@
+﻿{
+  "ConnectionStrings": {
+    "DataAccessContext": "Server=(localdb)\\mssqllocaldb;Database=PracticalTest;Trusted_Connection=True;"
+  },
+  "FeatureToggles": {
+    "EnableDeveloperExceptions": true
+  }
+}
