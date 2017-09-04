@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PracticalTest.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace PracticalTest.Controllers
 {
@@ -19,16 +20,11 @@ namespace PracticalTest.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var user=_db.User.ToList();
-            return View();
+            var users=_db.User.ToList();
+            return View(users);
         }
         
-        // GET: User/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+        
         // GET: User/Create
         public ActionResult Create()
         {
@@ -55,49 +51,13 @@ namespace PracticalTest.Controllers
         }
 
         // GET: User/Edit/5
-        public ActionResult Edit(int id)
+        [Route("User/{UserId:long}/Services")]
+        public ActionResult Services(int UserId)
         {
-            return View();
+            var services = _db.Service.Where(service => service.UserServices.Any(us => us.UserId == UserId)).ToList();
+            return View(services);
         }
 
-        // POST: User/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: User/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: User/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
