@@ -1,4 +1,9 @@
 # PracticalTest
+
+Change database ConnectionStrings in PracticalTest/PracticalTest/config.development.json file
+
+
+
 1 List  all users from DB
 
 http://localhost/users/list
