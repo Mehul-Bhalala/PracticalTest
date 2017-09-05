@@ -38,6 +38,7 @@ namespace PracticalTest.Controllers
         {
             try
             {
+                user.CreateDate=DateTime.Today;
                 _db.Add(user);
                 _db.SaveChanges();
                 // TODO: Add insert logic here
