@@ -18,14 +18,16 @@ namespace PracticalTest.Controllers
             _db = db;
         }
         // GET: User
+        [Route("Users/list")]
         public ActionResult Index()
         {
             var users=_db.User.ToList();
             return View(users);
         }
-        
-        
+
+
         // GET: User/Create
+        [Route("Users/Create")]
         public ActionResult Create()
         {
             return View();
@@ -52,7 +54,7 @@ namespace PracticalTest.Controllers
         }
 
         // GET: User/Edit/5
-        [Route("User/{UserId:long}/Services")]
+        [Route("Users/{UserId:long}/Services")]
         public ActionResult Services(int UserId)
         {
             var services = _db.Service.Where(service => service.UserServices.Any(us => us.UserId == UserId)).ToList();
